@@ -9,8 +9,6 @@ specific_columns = FOREACH truck_events_subset GENERATE driverId, eventTime, eve
 STORE specific_columns INTO 'output/specific_columns' USING PigStorage(',');
 
 
-hdfs dfs -cat output/specific_columns/part-r-00000 | head
-
 
 drivers = LOAD '/user/malam/truck/drivers.csv' USING PigStorage(',') AS (driverId:int, name:chararray, ssn:chararray, location:chararray, certified:chararray, wage_plan:chararray);
 
